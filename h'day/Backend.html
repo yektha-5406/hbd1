@@ -1,0 +1,15 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/wish', methods=['POST'])
+def wish():
+    data = request.json
+    name = data.get("name")
+
+    message = f"🎉 Happy Birthday {name}! 🎂 Wishing you lots of happiness and success!"
+
+    return jsonify({"message": message})
+
+if __name__ == '__main__':
+    app.run(debug=True)
